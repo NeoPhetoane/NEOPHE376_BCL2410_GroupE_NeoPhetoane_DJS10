@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import { useState, useEffect } from "react";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [setPosts] = useState([]);
 
-  return (
-    <>
-    <h1>hello world</h1>
-    </>
-  )
+  useEffect(() => {
+    const fetchPostsFromApi = async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const data = await response.json();
+      setPosts(data);
+    };
+
+    fetchPostsFromApi();
+  }, []);
+
+  return <></>;
 }
 
-export default App
-
+export default App;
