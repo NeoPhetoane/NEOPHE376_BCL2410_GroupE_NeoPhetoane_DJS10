@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [posts, setPosts] = useState([]);
-  const [setError] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPostsFromApi = async () => {
@@ -26,7 +26,12 @@ function App() {
   return (
     <>
       <h1>Posts</h1>
-      <div>
+      {error ? (
+        <div className="error-message">
+          <p>Error: {error}</p>
+        </div>
+      ) : (
+        <div>
         {posts.map((post) => (
           <div key={post.id}>
             <h2>{post.title}</h2>
@@ -34,6 +39,7 @@ function App() {
           </div>
         ))}
       </div>
+      )}
     </>
   );
 }
