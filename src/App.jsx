@@ -31,14 +31,14 @@ function App() {
           <p>Error: {error}</p>
         </div>
       ) : (
-        <div>
+        <ol>
         {posts.map((post) => (
-          <div key={post.id}>
+          <li key={post.id}>
             <h2>{post.title}</h2>
             <p>{post.body}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
       )}
     </>
   );
