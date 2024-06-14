@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function App() {
-  const [setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPostsFromApi = async () => {
@@ -15,7 +15,19 @@ function App() {
     fetchPostsFromApi();
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <h1>Posts</h1>
+      <div>
+        {posts.map((post) => (
+          <div key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default App;
